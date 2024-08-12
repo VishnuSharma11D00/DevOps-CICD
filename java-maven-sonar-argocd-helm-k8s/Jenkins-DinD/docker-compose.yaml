@@ -1,0 +1,40 @@
+volumes:
+  jenkins-data:
+  jenkins-docker-certs:
+
+services:
+  jenkins:
+    image: vishnusharma11d00/jenkins-dind-image:v1  # Jenkins image with Docker-in-Docker support
+    container_name: jenkins
+    ports:
+      - "8080:8080"  # Jenkins web UI
+      - "50000:50000"  # Jenkins agent connection
+    environment:
+      - DOCKER_HOST=tcp://docker:2376  # Connect to Docker-in-Docker service
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
+    networks:
+      custom:
+        ipv4_address: 192.168.61.15
+    restart: on-failure
+    depends_on:
+      - docker  # Ensure Docker service starts before Jenkins
+
+  docker:
+    image: docker:dind  # Docker-in-Docker image
+    container_name: dind
+    privileged: true  # Required for Docker-in-Docker
+    ports:
+      - "2376:2376"  # Docker daemon port
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - jenkins-docker-certs:/certs/client
+      - jenkins-data:/var/jenkins_home
+    networks:
+      custom:
+        ipv4_address: 192.168.61.16
+    restart: always
