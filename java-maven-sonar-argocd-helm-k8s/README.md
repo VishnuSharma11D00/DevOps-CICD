@@ -4,15 +4,15 @@
 
 
 ## Repo description:
-- Jenkins-DinD :
-        - docker-compose.yaml and Dockerfile for Jenkins codes
+- Jenkins-DinD:
+  1. docker-compose.yaml and Dockerfile for Jenkins codes
 - spring-boot-app :
-        - Sample App code
-        - Dockerfile
-        - JenkinsFile - Groovy code for jenkins pipeline
-        - pom.xml
+  1. Sample App code
+  2. Dockerfile
+  3. JenkinsFile - Groovy code for jenkins pipeline
+  4. pom.xml
 - spring-boot-app-manifests :
-        - Deployment and service yaml fie for kubernetes. This can also be in a different repo.
+  1. Deployment and service yaml fie for kubernetes. This can also be in a different repo.
 
 
 ## Customization:
