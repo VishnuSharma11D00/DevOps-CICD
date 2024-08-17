@@ -7,7 +7,7 @@
 2. **User data script for EC2 userdata**:
    - Install openjdk 
    - install docker
-   - run junkins-container
+   - run jenkins-container
    - run sonarqube container
    - install kubectl
    - install eksctl
