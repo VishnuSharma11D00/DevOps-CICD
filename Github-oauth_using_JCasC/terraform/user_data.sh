@@ -17,10 +17,6 @@ sudo chmod 666 /var/run/docker.sock  # Giving Docker permissions
 # Installing Jenkins (using Docker)
 docker run -d -p 8080:8080 -p 50000:50000 --name jenkins-container vishnusharma11d00/jenkins-jcasc-plugin:2 || { echo "Jenkins installation failed"; exit 1; }
 
-# copying jenkins configuration file to jenkins-container
-git clone https://github.com/VishnuSharma11D00/DevOps-CICD.git
-docker cp DevOps-CICD/Github-oauth_using_JCasC/jenkins.yaml jenkins-container:/var/jenkins_home/casc_configs/jenkins.yaml
-
 # Running Docker Container for SonarQube
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community || { echo "SonarQube installation failed"; exit 1; }
 
