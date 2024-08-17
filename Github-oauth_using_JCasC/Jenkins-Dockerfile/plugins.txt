@@ -1,0 +1,2 @@
+# JCasC plugin
+configuration-as-code:latest
