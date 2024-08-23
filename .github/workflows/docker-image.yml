@@ -3,7 +3,7 @@ name: Build and Publish Docker Image
 on:
   push:
     paths:
-      - 'Github-oauth_using_JCasC/Jenkins-Dockerfile/plugin.txt'  # Trigger action only when plugin.txt is modified
+      - 'Github-oauth_using_JCasC/Jenkins-Dockerfile/plugins.txt'  # Trigger action only when plugins.txt is modified
 
 jobs:
   build:
