@@ -13,7 +13,7 @@ pipeline-aws:latest
 # Terraform plugin
 terraform:latest
 
-# Docker plugins
+# Docker plugin
 docker-plugin:latest
 docker-commons:latest
 docker-workflow:latest
