@@ -1,27 +1,5 @@
 # JCasC plugin
 configuration-as-code:latest
 
-# GitHub OAuth plugin
-github-oauth:latest
 
-# AWS Credentials plugin
-aws-credentials:latest
-
-# Pipeline: AWS Steps plugin
-pipeline-aws:latest
-
-# Terraform plugin
-terraform:latest
-
-# Docker plugins
-docker-plugin:latest
-docker-commons:latest
-docker-workflow:latest
-docker-java-api:latest
-
-# NodeJS plugin
-nodejs:latest
-
-# OWASP Dependency plugin
-dependency-check-jenkins-plugin:latest
   
