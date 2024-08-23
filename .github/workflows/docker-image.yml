@@ -3,7 +3,7 @@ name: Build and Publish Docker Image
 on:
   push:
     paths:
-      - 'Jenkins-Dockerfile/plugin.txt'  # Trigger action only when plugin.txt is modified
+      - 'Github-oauth_using_JCasC/Jenkins-Dockerfile/plugin.txt'  # Trigger action only when plugin.txt is modified
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: Jenkins-Dockerfile/Dockerfile
+        file: Github-oauth_using_JCasC/Jenkins-Dockerfile/Dockerfile
         push: true
         tags: vishnusharma11d00/jenkins-jcasc-plugin:latest
 
