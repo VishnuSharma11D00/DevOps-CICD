@@ -22,7 +22,7 @@ docker-java-api:latest
 # NodeJS plugin
 nodejs:latest
 
-# OWASP Dependency plugin
+# OWASP Dependenc plugin
 dependency-check-jenkins-plugin:latest
 
 
