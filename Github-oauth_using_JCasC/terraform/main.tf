@@ -74,13 +74,13 @@ resource "aws_instance" "jenkins" {
 }
 
 resource "aws_iam_instance_profile" "jenkins_instance_profile" {
-  name = "jenkins_instance_profile"
+  name = "Jenkins_instance_profile"
 
   role = aws_iam_role.jenkins_role.name
 }
 
 resource "aws_iam_role" "jenkins_role" {
-  name = "jenkins_role"
+  name = "Jenkins_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
