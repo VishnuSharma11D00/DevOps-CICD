@@ -1,0 +1,105 @@
+name: 'Terraform'
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        description: 'Plan, Apply, or Destroy'
+        options:
+        - plan
+        - apply
+        - destroy
+        required: true
+        default: 'apply'
+
+env:
+  AWS_REGION: us-east-1
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+permissions:
+  contents: read
+
+jobs:
+  CheckOut-Repo:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+  Setting-Up-Terraform:
+    runs-on: ubuntu-latest
+    needs: CheckOut-Repo
+
+    steps:
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.8.4
+
+  Terraform-Initializing:
+    runs-on: ubuntu-latest
+    needs: Setting-Up-Terraform
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Terraform Init
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform init
+
+  Terraform-Formatting-Validating:
+    runs-on: ubuntu-latest
+    needs: Terraform-Initializing
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Terraform Init
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform init
+
+    - name: Terraform Format
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform fmt
+
+    - name: Terraform Validate
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform validate
+
+  Terraform-Action:
+    runs-on: ubuntu-latest
+    needs: Terraform-Formatting-Validating
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.8.4
+
+    - name: Terraform Init
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform init
+
+    - name: Terraform Plan
+      if: ${{ github.event.inputs.action == 'plan' }}
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform plan -input=false
+
+    - name: Terraform Apply
+      if: ${{ github.event.inputs.action == 'apply' }}
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform apply -auto-approve -input=false
+
+    - name: Terraform Destroy
+      if: ${{ github.event.inputs.action == 'destroy' }}
+      working-directory: Github-oauth_using_JCasC/terraform
+      run: terraform destroy -auto-approve -input=false
