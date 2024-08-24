@@ -15,7 +15,7 @@ sudo systemctl enable --now docker
 sudo chmod 666 /var/run/docker.sock  # Giving Docker permissions
 
 # Installing Jenkins (using Docker)
-docker run -d -p 8080:8080 -p 50000:50000 --name jenkins-container vishnusharma11d00/jenkins-jcasc-plugin:2 || { echo "Jenkins installation failed"; exit 1; }
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins-container vishnusharma11d00/jenkins-jcasc-plugin:latest || { echo "Jenkins installation failed"; exit 1; }
 
 # Running Docker Container for SonarQube
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community || { echo "SonarQube installation failed"; exit 1; }
