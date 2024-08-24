@@ -47,7 +47,7 @@ resource "aws_instance" "jenkins" {
   ami           = "ami-04a81a99f5ec58529"
   instance_type = "t2.2xlarge"
   key_name      = "aws_keypair_user_thammu"  # Using the existing key pair
-  user_data     = file("user_data.sh")
+  user_data     = file("Github-oauth_using_JCasC/terraform/user_data.sh")
   
   root_block_device {
     volume_size           = 30
