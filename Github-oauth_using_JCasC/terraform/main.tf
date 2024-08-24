@@ -1,3 +1,13 @@
+terraform {
+  backend "s3" {
+    bucket         = "vishnusharma11d00-terraform-statefile"
+    key            = "terraform/jenkins/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-lock"
+    encrypt        = true
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
 }
@@ -5,7 +15,6 @@ provider "aws" {
 resource "aws_security_group" "jenkins_sg" {
   name        = "jenkins_sg"
   description = "Security group for Jenkins instance"
-  # vpc_id      = "your_vpc_id"  # Replace with your VPC ID if not using the default VPC
 
   ingress {
     from_port   = 22
@@ -46,7 +55,7 @@ resource "aws_security_group" "jenkins_sg" {
 resource "aws_instance" "jenkins" {
   ami           = "ami-04a81a99f5ec58529"
   instance_type = "t2.2xlarge"
-  key_name      = "aws_keypair_user_thammu"  # Using the existing key pair
+  key_name      = "aws_keypair_user_thammu"
   user_data     = file("user_data.sh")
   
   root_block_device {
