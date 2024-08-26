@@ -7,10 +7,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "vishnusharma11d00-eks-terraform-statefile"
+    bucket         = "vishnusharma11d00-terraform-statefile"
     region         = "us-east-1"
-    key            = "LockID"
-    dynamodb_table = "eks-terraform-lock"
+    key            = "eks/terraform.tfstate"
+    dynamodb_table = "terraform-lock"
     encrypt        = true
   }
 }
