@@ -11,6 +11,9 @@ properties([
 ])
 pipeline {
     agent any
+    tools {
+        terraform 'terraform' // Use the version configured in Jenkins
+    }
     stages {
         stage('Preparing') {
             steps {
