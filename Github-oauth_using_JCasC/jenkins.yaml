@@ -3,6 +3,6 @@ jenkins:
     github:
       githubWebUri: "https://github.com"
       githubApiUri: "https://api.github.com"
-      clientID: "Ov23li7sZVJT7c0pwJtR"
-      clientSecret: "f8c4317c850733cc4ff5794fa242d8fe5875a529"
+      clientID: "Ov23liuNeK2W3gAgANmB"
+      clientSecret: "7098197e7a007067f12f445d0b0c7b363d1a457f"
       oauthScopes: "read:org,user:email"
