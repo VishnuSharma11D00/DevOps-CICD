@@ -18,8 +18,8 @@
 3. **Terraform apply**
    
 4. **Create Github Oauth app**:
-   - Homepage URL : http://<ec2-pub-ip>:8080
-   - Authorization callback url: http://<ec2-pub-ip>:8080/securityRealm/finishLogin
+   - Homepage URL : http://ec2-pub-ip:8080
+   - Authorization callback url: http://ec2-pub-ip:8080/securityRealm/finishLogin
    - Get **Client ID** and **Client Secret ID**
    - update the values in jenkins JasC jenkins.yaml file in the repo.     
 
