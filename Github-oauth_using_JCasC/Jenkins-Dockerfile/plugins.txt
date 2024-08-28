@@ -25,6 +25,11 @@ nodejs:latest
 # OWASP Dependenc plugin
 dependency-check-jenkins-plugin:latest
 
+# JCasC job declaration plugin
+job-dsl
+
+# Add SonarQube Scanner plugin
+sonar
 
 
   
