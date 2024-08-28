@@ -1,8 +1,21 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              scope: GLOBAL
+              id: "GITHUB_CLIENT_ID"
+              secret: Ov23lio4Y2fQdSuqkcDl
+          - string:
+              scope: GLOBAL
+              id: "GITHUB_CLIENT_SECRET"
+              secret: 7deb384aa0a0d20e51145ded21c918ef11977364
+
 jenkins:
   securityRealm:
     github:
       githubWebUri: "https://github.com"
       githubApiUri: "https://api.github.com"
-      clientID: "${GITHUB_CLIENT_ID}"
-      clientSecret: "${GITHUB_CLIENT_SECRET}"
+      clientID: Ov23lio4Y2fQdSuqkcDl
+      clientSecret: 7deb384aa0a0d20e51145ded21c918ef11977364
       oauthScopes: "read:org,user:email"
