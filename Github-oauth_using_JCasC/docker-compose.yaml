@@ -38,3 +38,9 @@ services:
       custom:
         ipv4_address: 192.168.61.16
     restart: always
+
+networks:
+  custom:
+    ipam:
+      config:
+        - subnet: 192.168.61.0/24
