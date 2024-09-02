@@ -2,6 +2,8 @@ name: Build and Publish Docker Image
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'Github-oauth_using_JCasC/Jenkins-Dockerfile/plugins.txt'  # Trigger action only when plugins.txt is modified
 
@@ -28,7 +30,23 @@ jobs:
         context: .
         file: Github-oauth_using_JCasC/Jenkins-Dockerfile/Dockerfile
         push: true
-        tags: vishnusharma11d00/jenkins-jcasc-plugin:latest
+        tags: vishnusharma11d00/jenkins-jcasc-plugin:${{ github.run_number }}
+
+    - name: Update user_data.sh with build number
+      run: |
+        # Define build number
+        BUILD_NUMBER=${{ github.run_number }}
+
+        # Replace the latest tag with the build number in user_data.sh
+        sed -i "s|vishnusharma11d00/jenkins-jcasc-plugin:[^ ]*|vishnusharma11d00/jenkins-jcasc-plugin:${BUILD_NUMBER}|g" Github-oauth_using_JCasC/terraform/user_data.sh
+
+        # Commit the changes
+        git config user.email "vishnusharma11d00@gmail.com"
+        git config user.name "GitHub Actions"
+        git add Github-oauth_using_JCasC/terraform/user_data.sh
+        git commit -m "Update Docker image tag to ${BUILD_NUMBER} in user_data.sh"
+        git push
+
 
     - name: Post build cleanup
       run: docker builder prune --all --force
