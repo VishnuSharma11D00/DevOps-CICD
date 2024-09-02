@@ -34,7 +34,7 @@ jobs:
 
     - name: Update user_data.sh with build number
       env:
-        PAT: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         # Define build number
         BUILD_NUMBER=${{ github.run_number }}
@@ -47,7 +47,7 @@ jobs:
         git config user.name "GitHub Actions"
         git add Github-oauth_using_JCasC/terraform/user_data.sh
         git commit -m "Update Docker image tag to ${BUILD_NUMBER} in user_data.sh"
-        git push https://${PAT}@github.com/VishnuSharma11D00/DevOps-CICD.git HEAD:JCasC-var
+        git push https://x-access-token:${GITHUB_TOKEN}@github.com/VishnuSharma11D00/DevOps-CICD.git HEAD:JCasC-var
 
 
     - name: Post build cleanup
