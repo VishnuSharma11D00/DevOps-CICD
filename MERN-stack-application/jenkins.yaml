@@ -1,0 +1,85 @@
+tool:
+  terraform:
+    installations:
+      - name: "terraform"
+        properties:
+          - installSource:
+              installers:
+                - terraformInstaller:
+                    id: "1.9.3-linux-amd64"
+        home: ""
+  nodejs:
+    installations:
+      - name: "nodejs"
+        properties:
+          - installSource:
+              installers:
+                - nodeJSInstaller:
+                    id: "22.5.1"
+                    npmPackagesRefreshHours: 72
+        home: ""
+  sonarRunnerInstallation:
+    installations:
+      - name: "sonar-scanner"
+        properties:
+          - installSource:
+              installers:
+                - sonarRunnerInstaller:
+                    id: "LATEST_RELEASE"
+        home: ""
+  dockerTool:
+    installations:
+      - name: "docker"
+        properties:
+          - installSource:
+              installers:
+                - fromDocker:
+                    version: "latest"
+        home: ""
+  jdk:
+    installations:
+      - name: "jdk"
+        properties:
+          - installSource:
+              installers:
+                - jdkInstaller:
+                    id: "jdk-11.0.14+9"
+        home: ""
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - aws:
+              id: "aws-creds"
+              accessKey: youraccesskey
+              secretKey: yoursecretaccesskey
+              scope: GLOBAL
+          - string:
+              id: "sonar-token"
+              secret: yoursonartoken
+              scope: GLOBAL
+          - string:
+              id: "ACCOUNT_ID"
+              secret: yourawsaccountID
+              scope: GLOBAL
+          - string:
+              id: "ECR_REPO1"
+              secret: three-tier-frontend
+              scope: GLOBAL
+          - string:
+              id: "ECR_REPO2"
+              secret: three-tier-backend
+              scope: GLOBAL
+          - usernamePassword:
+              id: "GITHUB-APP"
+              username: GITHUB_USERNAME
+              password: GITHUB_PASSWORD
+              scope: GLOBAL
+
+unclassified:
+  sonarGlobalConfiguration:
+    installations:
+      - name: "sonar-server"
+        serverUrl: "http://<url>:9000"
+        credentialsId: sonar-token
