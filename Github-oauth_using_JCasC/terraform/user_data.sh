@@ -15,5 +15,5 @@ sudo systemctl enable --now docker
 sudo chmod 666 /var/run/docker.sock  # Giving Docker permissions
 
 # Installing Jenkins (using Docker)
-docker run -d -p 8080:8080 -p 50000:50000 --name jenkins-container vishnusharma11d00/jenkins-jcasc-plugin:13 || { echo "Jenkins installation failed"; exit 1; }
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins-container vishnusharma11d00/jenkins-jcasc-plugin:14 || { echo "Jenkins installation failed"; exit 1; }
 
