@@ -1,4 +1,4 @@
-# JCasC plugin
+# JCasC plugins
 configuration-as-code:latest
 
 # GitHub OAuth plugin
