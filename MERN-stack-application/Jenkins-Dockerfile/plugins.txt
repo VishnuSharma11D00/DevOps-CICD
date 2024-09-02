@@ -1,0 +1,32 @@
+# JCasC plugin
+configuration-as-code:latest
+
+# GitHub OAuth plugin
+github-oauth:latest
+
+# AWS Credentials plugin
+aws-credentials:latest
+
+# Pipeline: AWS Steps plugin
+pipeline-aws:latest
+
+# Terraform plugin
+terraform:latest
+
+# Docker plugin
+docker-plugin:latest
+docker-commons:latest
+docker-workflow:latest
+docker-java-api:latest
+
+# NodeJS plugin
+nodejs:latest
+
+# OWASP Dependenc plugin
+dependency-check-jenkins-plugin:latest
+
+# JCasC job declaration plugin
+job-dsl
+
+# SonarQube Scanner plugin
+sonar
