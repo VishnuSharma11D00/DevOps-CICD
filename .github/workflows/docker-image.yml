@@ -3,7 +3,7 @@ name: Build and Publish Docker Image
 on:
   push:
     branches:
-      - main
+      - JCasC-var
     paths:
       - 'Github-oauth_using_JCasC/Jenkins-Dockerfile/plugins.txt'  # Trigger action only when plugins.txt is modified
 
@@ -41,11 +41,13 @@ jobs:
         sed -i "s|vishnusharma11d00/jenkins-jcasc-plugin:[^ ]*|vishnusharma11d00/jenkins-jcasc-plugin:${BUILD_NUMBER}|g" Github-oauth_using_JCasC/terraform/user_data.sh
 
         # Commit the changes
+        env:
+          PAT: ${{ secrets.PAT }}
         git config user.email "vishnusharma11d00@gmail.com"
         git config user.name "GitHub Actions"
         git add Github-oauth_using_JCasC/terraform/user_data.sh
         git commit -m "Update Docker image tag to ${BUILD_NUMBER} in user_data.sh"
-        git push
+        git push https://${PAT}@github.com/VishnuSharma11D00/DevOps-CICD.git HEAD:JCasC-var
 
 
     - name: Post build cleanup
