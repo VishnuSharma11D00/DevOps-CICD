@@ -64,6 +64,7 @@ sudo snap install helm --classic || { echo "Helm installation failed"; exit 1; }
 
 
 # copying Jenkins configuration file into jenkins container
+cd /home/ubuntu/
 git clone https://github.com/VishnuSharma11D00/DevOps-CICD.git --single-branch --branch main
 docker cp DevOps-CICD/Github-oauth_using_JCasC/jenkins.yaml jenkins-container:/var/jenkins_home/casc_configs/jenkins.yaml
 
