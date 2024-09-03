@@ -34,7 +34,7 @@ Here, I have created git-hub action to build and publish image when push changes
    
 7. **Apply JCasC** :
     - open jenkins form http://ec2-pub-ip:8080 
-    - **Manage Jenkins** > **Jenkins Configuration as Code** > give path of your JCasC yam file **/var/jenkins_home/casc_configs/jenkins.yaml**
+    - **Manage Jenkins** > **Jenkins Configuration as Code** > give path of your JCasC yaml file **/var/jenkins_home/casc_configs/jenkins.yaml**
     - apply configurations
 
 
