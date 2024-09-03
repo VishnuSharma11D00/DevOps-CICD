@@ -50,3 +50,6 @@ With the recent upgrades, we've streamlined our Jenkins setup using JCasC. Hereâ
 - Review and test the updated Jenkins image and JCasC configuration.
 - Integrate the updated setup into your CI/CD workflows.
 - Monitor and adjust configurations as needed based on feedback and requirements.
+
+## 
+Credential Best Practices: While the current JCasC setup may involve hardcoding credentials, this approach is not recommended for sensitive information. A better practice is to define non-sensitive details in the code and use placeholders for sensitive credentials. After creating the Jenkins instance, you should manually update these credentials through the Jenkins UI. Alternatively, consider using secure methods like Docker secrets, AWS Secrets Manager, or Azure Key Vault to manage sensitive information. For more details, refer to the Jenkins Configuration as Code documentation on credential management and secret sources.
