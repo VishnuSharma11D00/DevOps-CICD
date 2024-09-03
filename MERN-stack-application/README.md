@@ -1,2 +1,2 @@
-# DevOps Implementation on MERN Stack application - Jenkins using JCasC
+# MERN Stack application (CI) - Jenkins using JCasC
 
