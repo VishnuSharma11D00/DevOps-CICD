@@ -59,7 +59,17 @@ While the current JCasC setup may involve hardcoding credentials, this approach 
 https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc#secret-sources
 
 ## Instructions
-- create Jenkins image and update user data
-- deploy terraform
-- copy jenkins.yaml
-- apply configurations
+- **Create Jenkins image**: From Jenkins-Dockerfile Directory, add required plugins in plugins.txt file. It'll trigger GitHub actions to build and publish the image,and replace the tag in terraform/user_data.sh for your Jenkins instance.(.github/workflows/jenkins-image.yaml)
+- **Deploy terraform**: In ``terraform/main.tf``edit key pair with yours and launch your instance.
+  ```
+  cd MERN-stack-application/terraform
+  terraform init
+  terraform plan
+  terraform apply
+  ```
+- **Copy jenkins.yaml into Jenkins container**: SSH into ec2 and create jenkins.yaml and copy-paste jenkins.yaml from this repo and save. To copy the file into jenkins-container, apply commands:
+  ```
+  docker cp jenkins.yaml jenkins-container:/var/jenkins_home/casc_configs/jenkins.yaml
+  ```
+- **Apply configurations**: After login to your jenkins, go to **Manage Jenkins > Jenkins Configurations as Code**. Paste the location or directory of the jenkins.yaml file: ``/var/jenkins_home/casc_configs/jenkins.yaml``. Apply configurations.
+- Check and confirm your configurations from UI.
