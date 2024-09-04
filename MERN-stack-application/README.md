@@ -1,4 +1,4 @@
-# MERN Stack application (CI) - Jenkins using JCasC
+# MERN Stack application CI - Jenkins using JCasC
 
 ## Overview
 
