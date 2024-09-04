@@ -1,5 +1,5 @@
 # MERN Stack application - Jenkins using JCasC
-![Screenshot](MERN-stack-Diagram.png)
+![Screenshot](MERN-stack-Diagram(1).png)
 
 ## Overview
 
