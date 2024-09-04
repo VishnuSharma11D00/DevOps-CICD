@@ -1,4 +1,5 @@
 # MERN Stack application CI - Jenkins using JCasC
+![Screenshot](MERN-stack-Diagram.png)
 
 ## Overview
 
@@ -59,8 +60,9 @@ While the current JCasC setup may involve hardcoding credentials, this approach 
 https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc#secret-sources
 
 ## Instructions
-- **Create Jenkins image**: From Jenkins-Dockerfile Directory, add required plugins in plugins.txt file. It'll trigger GitHub actions to build and publish the image,and replace the tag in terraform/user_data.sh for your Jenkins instance.(.github/workflows/jenkins-image.yaml)
+- **Create Jenkins image**: From Jenkins-Dockerfile Directory, add required plugins in plugins.txt file. It'll trigger GitHub actions(.github/workflows/jenkins-image.yaml) to build and publish the image,and replace the tag in terraform/user_data.sh for your Jenkins instance. Make sure you provide Action secrets for DockerHub Account.
 - **Deploy terraform**: In ``terraform/main.tf``edit key pair with yours and launch your instance.
+  
   ```
   cd MERN-stack-application/terraform
   terraform init
